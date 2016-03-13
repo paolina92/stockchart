@@ -3,7 +3,7 @@ import {Component}          from 'angular2/core';
 @Component({
 	selector: 'stock-chart',
 	template: `
-		<svg id="visualisation" width="1240" height="500"></svg>
+		<div class="row text-center"><svg id="visualisation" width="1000" height="350"></svg></div>
 	`
 })
 export class StockChartComponent {
@@ -15,13 +15,13 @@ export class StockChartComponent {
         let maxY = this._getMaxY(data);
 
         let vis = d3.select("#visualisation"),
-        WIDTH = 1240,
-        HEIGHT = 500,
+        WIDTH = 1000,
+        HEIGHT = 350,
         MARGINS = {
-            top: 40,
+            top: 50,
             right: 50,
-            bottom: 40,
-            left: 75
+            bottom: 50,
+            left: 50
         },
         xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1, maxX]),
         yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, maxY]),
@@ -48,16 +48,16 @@ export class StockChartComponent {
             vis.append('svg:rect')
             .attr('width', 20)
             .attr('height', 3)
-            .attr('x', 525 + 100 * index)
-            .attr('y', 430)
+            .attr('x', 395 + 100 * index)
+            .attr('y', 280)
             .style('fill', data[index].color)
             .style('stroke', data[index].color);
             vis.append('svg:text')
             .text(data[index].label)
             .style('font-size', "10px")
             .style('fill', data[index].color)
-            .attr('x', 550 + 100 * index)
-            .attr('y', 435);
+            .attr('x', 420 + 100 * index)
+            .attr('y', 285);
         }
 	}
 

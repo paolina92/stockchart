@@ -6,16 +6,20 @@ import {StockChartComponent}            from './stock-chart.component';
   selector: 'stock-table',
   template: `
     <stock-chart></stock-chart>
-    <table class="table table-hover">
-      <tr *ngFor="#stock of stocks">
-        <td><div [style.color]="stock.color" class="label">{{stock.label}}</div></td>
-        <td *ngFor="#td of stock.values">
-          <div class="form-group">
-            <input class="form-control" type="number" [(ngModel)]="td.val" (ngModelChange)="onChangeValue(td)" (focus)="clearTimer()" (blur)="initTimer()">
-          </div>
-        </td>
-      </tr>
-    </table>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <tr *ngFor="#stock of stocks">
+            <td><div [style.color]="stock.color" class="label">{{stock.label}}</div></td>
+            <td *ngFor="#td of stock.values">
+              <div class="form-group">
+                <input class="form-control" type="number" [(ngModel)]="td.val" (ngModelChange)="onChangeValue(td)" (focus)="clearTimer()" (blur)="initTimer()">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   `,
   directives:[StockChartComponent],
   providers: [
